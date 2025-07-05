@@ -3,7 +3,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Cyber Dash - Custom</title>
+  <title>Cyber Dash - GAZO Edition</title>
   <style>
     body {
       margin: 0;
@@ -38,7 +38,7 @@
 }
 
 .obstacle {
-      background-image: url('assets/[![IMG-20250312-152913-579.jpg](https://i.postimg.cc/8PH5XhcP/IMG-20250312-152913-579.jpg)](https://postimg.cc/RNW4NJwj)');
+      background-image: url('https://i.postimg.cc/8PH5XhcP/IMG-20250312-152913-579.jpg');
 }
 
     #score {
@@ -53,6 +53,22 @@
       color: red;
       margin-top: 20px;
 }
+
+    #restart {
+      display: none;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-family: monospace;
+      font-weight: bold;
+      background: lime;
+      color: black;
+      border: none;
+      cursor: pointer;
+}
+
+    #restart:hover {
+      background: #66ff66;
+}
   </style>
 </head>
 <body>
@@ -61,12 +77,14 @@
   </div>
   <div id="score">Score: 0</div>
   <div id="message"></div>
+  <button id="restart" onclick="location.reload()">Rejouer</button>
 
   <script>
     const game = document.getElementById("game");
     const player = document.getElementById("player");
     const scoreDisplay = document.getElementById("score");
     const message = document.getElementById("message");
+    const restartBtn = document.getElementById("restart");
 
     let playerX = 180;
     let score = 0;
@@ -106,6 +124,7 @@
 ) {
         gameOver = true;
         message.textContent = "💥 GAME OVER — SCORE: " + score;
+        restartBtn.style.display = "block";
 }
 
       if (top> 400) {
@@ -132,5 +151,3 @@
   </script>
 </body>
 </html>```
-```
-```
