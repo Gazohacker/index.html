@@ -3,120 +3,88 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>GAZO // Dark Node Access</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GAZO.SHIELD // Accueil</title>
   <style>
     body {
       margin: 0;
-      background: radial-gradient(ellipse at center, #0a0a0a, #000);
-      color: #ff3257;
-      font-family: 'Courier New', monospace;
-      overflow: hidden;
-      cursor: url('https://cur.cursors-4u.net/cursors/cur-13/cur1145.cur'), auto;
-}
-
-.scanlines {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: repeating-linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.2) 0px,
-        rgba(0, 0, 0, 0.2) 1px,
-        transparent 1px,
-        transparent 4px
-);
-      pointer-events: none;
-      z-index: 3;
-}
-
-.glitch-text {
-      text-align: center;
-      font-size: 1.5em;
-      margin-top: 20vh;
-      text-shadow: 0 0 2px #ff3257, 0 0 6px #1fffe2;
-      animation: glitch 2s infinite;
-}
-
-    @keyframes glitch {
-      0%   { transform: skewX(0);}
-      20%  { transform: skewX(-1deg);}
-      40%  { transform: skewX(1deg);}
-      60%  { transform: skewX(0);}
-      80%  { transform: skewX(1.5deg);}
-      100% { transform: skewX(0);}
-}
-
-.terminal-box {
-      margin: 50px auto;
-      width: 90%;
-      max-width: 600px;
-      background: rgba(20, 20, 20, 0.8);
-      border: 1px solid #ff3257;
-      padding: 20px;
-      box-shadow: 0 0 10px #1fffe2;
-      z-index: 2;
-}
-
-.command-line {
-      font-size: 0.95em;
-      color: #ff3257;
-      margin-top: 10px;
-}
-
-.intro-seq {
-      white-space: pre-line;
-      font-size: 1em;
+      background: #000;
       color: #1fffe2;
-      margin-top: 20px;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      overflow-x: hidden;
 }
 
-.btn-access {
-      margin-top: 30px;
-      padding: 10px 25px;
+.container {
+      padding: 60px 20px;
+}
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      text-shadow: 0 0 4px #ff3257;
+      animation: flicker 2s infinite;
+}
+
+    @keyframes flicker {
+      0%, 100% { opacity: 1;}
+      50% { opacity: 0.8;}
+}
+
+    p {
+      max-width: 600px;
+      margin: auto;
+      font-size: 1em;
+      color: #ccc;
+}
+
+.btn-group {
+      margin-top: 40px;
+}
+
+.btn {
+      display: inline-block;
+      margin: 15px;
+      padding: 12px 28px;
       background: #000;
       border: 2px solid #1fffe2;
       color: #1fffe2;
+      font-weight: bold;
       font-family: monospace;
-      font-size: 1em;
-      cursor: pointer;
-      transition: all 0.3s ease;
+      transition: 0.3s;
+      text-decoration: none;
 }
 
-.btn-access:hover {
+.btn:hover {
       background: #1fffe2;
       color: #000;
+      box-shadow: 0 0 10px #1fffe2;
 }
 
-    audio {
-      display: none;
+.footer {
+      margin-top: 60px;
+      font-size: 0.8em;
+      color: #888;
 }
   </style>
 </head>
 <body>
-  <audio src="https://freegames.by-cv.com/audio/modem.mp3" autoplay loop></audio>
+  <div class="container">
+    <h1>GAZO.SHIELD</h1>
+    <p>“Maîtrise. Discrétion. Défense.”<br>
+    La cybersécurité redéfinie sous une interface clandestine.
+    GAZO.SHIELD est ton lab personnel pour apprendre, sécuriser, et diffuser les outils du savoir numérique.</p>
 
-  <div class="glitch-text">[ RELAIS GAZO NODE-8832.0 | INITIATION EN COURS... ]</div>
-
-  <div class="terminal-box">
-    <div class="intro-seq">
-Connexion.onion://493-rlx/...<br>
-⟶ Canal chiffré établi: ███████████████████<br>
-⟶ Chargement des paquets: NODE/GAZO/CORE.ROM<br>
-⟶ Clés de signature: [GA-ZO-88–SIG/15]<br>
-⟶ Autorisation passive activée...
+    <div class="btn-group">
+      <a href="academy.html" class="btn">🎓 Explorer les formations</a>
+      <a href="tools.html" class="btn">🧰 Accéder aux outils</a>
+      <a href="services.html" class="btn">🔐 Demander un audit</a>
     </div>
 
-    <div class="command-line">
-      GAZO://> Accès non-certifié détecté. Poursuivre?
+    <div class="footer">
+      Créé par GAZO — Cybersécurité & Fiction Numérique ©
     </div>
-
-    <a href="archives.html">
-      <button class="btn-access">⛛ ACCÉDER AU NŒUD</button>
-    </a>
   </div>
-
-  <div class="scanlines"></div>
 </body>
 </html>
 ```
