@@ -1,0 +1,119 @@
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>GAZO.SHIELD // Outils Cyber</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background: #000;
+      color: #1fffe2;
+      font-family: 'Courier New', monospace;
+      margin: 0;
+      padding: 20px;
+}
+
+    h1 {
+      text-align: center;
+      font-size: 2.2em;
+      margin-bottom: 10px;
+      text-shadow: 0 0 4px #ff3257;
+}
+
+    p.slogan {
+      text-align: center;
+      font-size: 1em;
+      color: #ccc;
+      margin-bottom: 40px;
+}
+
+.grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+}
+
+.tool {
+      background: #111;
+      border: 1px solid #1fffe2;
+      box-shadow: 0 0 10px #1fffe2;
+      width: 280px;
+      padding: 20px;
+      transition: 0.3s;
+}
+
+.tool:hover {
+      transform: scale(1.03);
+      border-color: #ff3257;
+      box-shadow: 0 0 15px #ff3257;
+}
+
+.tool h2 {
+      font-size: 1.1em;
+      margin-bottom: 10px;
+      color: #ff3257;
+}
+
+.tool p {
+      font-size: 0.9em;
+      color: #ccc;
+}
+
+.tool a {
+      display: inline-block;
+      margin-top: 15px;
+      background: #000;
+      border: 1px solid #1fffe2;
+      padding: 8px 18px;
+      color: #1fffe2;
+      text-decoration: none;
+      font-size: 0.9em;
+}
+
+.tool a:hover {
+      background: #1fffe2;
+      color: #000;
+}
+
+.back {
+      display: block;
+      margin: 40px auto;
+      text-align: center;
+      color: #ff3257;
+      text-decoration: none;
+      font-size: 0.9em;
+}
+  </style>
+</head>
+<body>
+  <h1>GAZO.SHIELD: OUTILS CYBER</h1>
+  <p class="slogan">"L’outil forge l’esprit. Le script protège l’invisible."</p>
+
+  <div class="grid">
+
+    <div class="tool">
+      <h2>🐍 Packet Sniffer Python</h2>
+      <p>Script simple en Python pour écouter le trafic sur ton interface réseau (socket + raw packet).</p>
+      <a href="https://github.com/Sreeram-23/Packet-Sniffer" target="_blank">🔗 GitHub</a>
+    </div>
+
+    <div class="tool">
+      <h2>🧾 Analyseur de logs Apache</h2>
+      <p>Script qui trie, extrait et met en forme les logs Apache pour détecter des requêtes suspectes.</p>
+      <a href="https://github.com/EkoLabs/apache-log-analyzer" target="_blank">🔗 Télécharger</a>
+    </div>
+
+    <div class="tool">
+      <h2>🔐 Générateur & Vérifieur MD5</h2>
+      <p>Interface CLI pour hasher un mot ou vérifier une signature MD5 rapidement depuis un terminal local.</p>
+      <a href="https://github.com/ricardojoserf/MD5-Encryptor" target="_blank">🔗 Voir le code</a>
+    </div>
+
+  </div>
+
+  <a href="index.html" class="back">⟵ Retour à l’accueil</a>
+</body>
+</html>
+```
