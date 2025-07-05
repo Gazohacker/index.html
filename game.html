@@ -2,17 +2,17 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Cyber Dash – GAZO Ultra</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>Cyber Dash – GAZO Ultra v2.0</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
       margin: 0;
       background: url('https://i.postimg.cc/8PH5XhcP/IMG-20250312-152913-579.jpg') no-repeat center center fixed;
       background-size: cover;
       font-family: monospace;
-      overflow-x: hidden;
       color: #00ff00;
+      overflow-x: hidden;
 }
 
     #game {
@@ -20,7 +20,7 @@
       width: 100%;
       max-width: 400px;
       height: 400px;
-      margin: 30px auto 10px auto;
+      margin: 30px auto 10px;
       border: 2px solid lime;
       background: rgba(0, 0, 0, 0.6);
 }
@@ -43,7 +43,7 @@
       background-image: url('https://i.postimg.cc/8PH5XhcP/IMG-20250312-152913-579.jpg');
 }
 
-    #score {
+    #score, #highscore {
       text-align: center;
       font-size: 1.2em;
       margin-top: 10px;
@@ -56,9 +56,9 @@
       margin-top: 20px;
 }
 
-    #restart {
-      display: none;
-      margin: 20px auto;
+    #restart, #back, #toggle-sound {
+      display: block;
+      margin: 10px auto;
       padding: 10px 20px;
       font-family: monospace;
       font-weight: bold;
@@ -68,7 +68,7 @@
       cursor: pointer;
 }
 
-    #restart:hover {
+    #restart:hover, #back:hover, #toggle-sound:hover {
       background: #66ff66;
 }
 
@@ -103,14 +103,11 @@
   </style>
 </head>
 <body>
-  <!-- Audio -->
   <audio id="bg-music" src="https://freegames.by-cv.com/audio/matrix-theme.mp3" loop autoplay></audio>
   <audio id="move-sound" src="https://freegames.by-cv.com/audio/blip.wav"></audio>
   <audio id="hit-sound" src="https://freegames.by-cv.com/audio/break.wav"></audio>
 
-  <div id="game">
-    <div id="player"></div>
-  </div>
+  <div id="game"><div id="player"></div></div>
 
   <div id="controls">
     <button class="btn" onclick="movePlayer(-20)">⬅️</button>
@@ -118,29 +115,43 @@
   </div>
 
   <div id="score">Score: 0</div>
+  <div id="highscore">🏆 High Score: 0</div>
   <div id="message"></div>
+
   <button id="restart" onclick="location.reload()">🔄 Rejouer</button>
+  <button id="back" onclick="window.location.href='index.html'">🏠 Retour à l'accueil</button>
+  <button id="toggle-sound">🔊 Son: ON</button>
 
   <script>
     const game = document.getElementById("game");
     const player = document.getElementById("player");
     const scoreDisplay = document.getElementById("score");
+    const highscoreDisplay = document.getElementById("highscore");
     const message = document.getElementById("message");
     const restartBtn = document.getElementById("restart");
+    const bgMusic = document.getElementById("bg-music");
     const moveSound = document.getElementById("move-sound");
     const hitSound = document.getElementById("hit-sound");
+    const toggleSoundBtn = document.getElementById("toggle-sound");
 
     let playerX = 180;
     let score = 0;
+    let highscore = localStorage.getItem("highscore") || 0;
     let gameOver = false;
+    let speed = 4;
+let soundOn = true;
+
+    highscoreDisplay.textContent = "🏆 High Score: " + highscore;
 
     function movePlayer(x) {
       if (gameOver) return;
       playerX += x;
       playerX = Math.max(0, Math.min(360, playerX));
       player.style.left = playerX + "px";
-      moveSound.currentTime = 0;
-      moveSound.play();
+      if (soundOn) {
+        moveSound.currentTime = 0;
+        moveSound.play();
+}
 }
 
     document.addEventListener("keydown", (e) => {
@@ -148,11 +159,21 @@
       if (e.key === "ArrowRight") movePlayer(20);
 });
 
+    toggleSoundBtn.onclick = () => {
+      soundOn =!soundOn;
+      if (soundOn) {
+        bgMusic.play();
+        toggleSoundBtn.textContent = "🔊 Son: ON";
+} else {
+        bgMusic.pause();
+        toggleSoundBtn.textContent = "🔇 Son: OFF";
+}
+};
+
     function createObstacle() {
       const obstacle = document.createElement("div");
       obstacle.classList.add("obstacle");
-
-obstacle.style.left = Math.floor(Math.random() * 360) + "px";
+      obstacle.style.left = Math.floor(Math.random() * 360) + "px";
       obstacle.style.top = "0px";
       game.appendChild(obstacle);
       return obstacle;
@@ -160,17 +181,14 @@ obstacle.style.left = Math.floor(Math.random() * 360) + "px";
 
     function updateObstacle(obstacle) {
       let top = parseInt(obstacle.style.top);
-      obstacle.style.top = (top + 4) + "px";
-
+      obstacle.style.top = (top + speed) + "px";
       const obsX = parseInt(obstacle.style.left);
       const obsY = top + 40;
-      if (
-        obsX < playerX + 40 &&
-        obsX + 40> playerX &&
-        obsY> 360
-) {
+
+      if (obsX < playerX + 40 && obsX + 40> playerX && obsY> 360) {
         gameOver = true;
-        hitSound.play();
+        if (soundOn) hitSound.play();
+        if (navigator.vibrate) navigator.vibrate([200]);
         message.textContent = "💥 GAME OVER — SCORE: " + score;
         restartBtn.style.display = "block";
 }
@@ -180,6 +198,12 @@ obstacle.style.left = Math.floor(Math.random() * 360) + "px";
         if (!gameOver) {
           score++;
           scoreDisplay.textContent = "Score: " + score;
+          if (score> highscore) {
+            highscore = score;
+            localStorage.setItem("highscore", highscore);
+            highscoreDisplay.textContent = "🏆 High Score: " + highscore;
+}
+          if (score % 5 === 0) speed++; // Mode expert 👾
 }
 }
 }
@@ -195,8 +219,8 @@ obstacle.style.left = Math.floor(Math.random() * 360) + "px";
 }
 }, 30);
 }
-}, 1300);
+}, 1200);
   </script>
 </body>
 </html>
-``````
+```
