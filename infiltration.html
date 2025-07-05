@@ -1,0 +1,87 @@
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>INTRUSION DÉTECTÉE</title>
+  <style>
+    body {
+      background-color: black;
+      color: red;
+      font-family: monospace;
+      padding: 20px;
+      font-size: 1.2em;
+      overflow: hidden;
+}
+
+    #log {
+      white-space: pre-wrap;
+}
+
+.alert {
+      animation: blink 1s infinite;
+      color: #ff0000;
+      font-weight: bold;
+}
+
+    @keyframes blink {
+      50% { opacity: 0.4;}
+}
+
+.stars {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background-image: url('https://raw.githubusercontent.com/ManzDev/cursos-assets/main/animated-stars.gif');
+      opacity: 0.2;
+      pointer-events: none;
+      z-index: -1;
+}
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="alert">⚠️ INTRUSION DÉTECTÉE — PROTOCOLE D'ALARME ACTIF</div>
+  <br>
+  <div id="log"></div>
+
+  <script>
+    const lignes = [
+      "> Tentative d'accès au noyau...",
+      "> Contournement du pare-feu...",
+      "> Localisation des fichiers cryptés...",
+      "> Déchiffrement en cours...",
+      "░▒▓█ 20% █▓▒░",
+      "░▒▓█ 50% █▓▒░",
+      "░▒▓█ 100% █▓▒░",
+      "> Chargement des données sensibles...",
+      "> 🧨 Séquence d'autodestruction désactivée.",
+      "> Brèche maintenue. Contrôle système obtenu."
+    ];
+
+    let i = 0;
+    const log = document.getElementById("log");
+
+    function writeLine() {
+      if (i < lignes.length) {
+        let j = 0;
+        const texte = lignes[i];
+        const intervalle = setInterval(() => {
+          if (j < texte.length) {
+            log.innerHTML += texte[j];
+            j++;
+} else {
+            clearInterval(intervalle);
+            log.innerHTML += "\n";
+            i++;
+            setTimeout(writeLine, 500);
+}
+}, 50);
+}
+}
+
+    window.onload = writeLine;
+  </script>
+</body>
+</html>
+```
