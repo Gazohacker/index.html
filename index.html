@@ -3,97 +3,78 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Blackbook | GAZO</title>
+  <title>Connexion - Blackbook</title>
   <style>
     body {
-      margin: 0;
-      background-color: #0d0d0d;
+      background-color: black;
       color: #00ff00;
       font-family: monospace;
-      padding: 20px;
+      padding: 50px;
 }
 
-.profile {
-      display: flex;
-      align-items: center;
-      gap: 20px;
+    h2 {
+      text-align: center;
       margin-bottom: 40px;
 }
 
-.profile img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      border: 2px solid #00ff00;
-}
-
-.post {
-      border: 1px solid #00ff00;
-      padding: 15px;
-      margin-bottom: 20px;
-      background: rgba(0, 255, 0, 0.05);
-}
-
-.buttons {
-      margin-top: 10px;
-}
-
-.btn {
-      margin-right: 12px;
-      background: #00ff00;
-      color: black;
-      border: none;
-      padding: 4px 10px;
-      cursor: pointer;
+    input {
+      display: block;
+      margin: 15px auto;
+      padding: 8px;
       font-family: inherit;
-      font-size: 0.9em;
-      font-weight: bold;
+      font-size: 1em;
+      width: 300px;
+      background: #111;
+      border: 1px solid #00ff00;
+      color: #00ff00;
 }
 
-.btn:hover {
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background: #00ff00;
+      border: none;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+}
+
+    button:hover {
       background: lime;
+}
+
+.message {
+      text-align: center;
+      margin-top: 20px;
+      color: red;
+      font-weight: bold;
 }
   </style>
 </head>
 <body>
-  <div class="profile">
-    <img src="https://raw.githubusercontent.com/ManzDev/cursos-assets/main/avatar-gamer.png" alt="GAZO profile">
-    <div>
-      <h2>👤 GAZO Hacker</h2>
-      <p><em>Statut: connecté depuis le ShadowNet 🕶️</em></p>
-    </div>
-  </div>
+  <h2>> Connexion au réseau Blackbook</h2>
 
-  <div class="post">
-    <p><strong>🧠 GAZO Hacker</strong> · il y a 2h</p>
-    <p>Lancement de l’interface BLACKBOOK réussi. Le réseau est actif, les agents sont connectés.</p>
-    <div class="buttons">
-      <button class="btn">J’aime</button>
-      <button class="btn">Commenter</button>
-      <button class="btn">Partager</button>
-    </div>
-  </div>
+  <input type="text" id="nom" placeholder="Nom d'utilisateur">
+  <input type="password" id="pass" placeholder="Mot de passe">
+  <button onclick="connexion()">Connexion</button>
+  <div class="message" id="message"></div>
 
-  <div class="post">
-    <p><strong>💾 GAZO Hacker</strong> · il y a 1h</p>
-    <p>Ajout du fichier confidentiel: <a href="downloads.html" style="color: #00ff00;">GAZO OPS.zip</a></p>
-    <div class="buttons">
-      <button class="btn">J’aime</button>
-      <button class="btn">Commenter</button>
-      <button class="btn">Partager</button>
-    </div>
-  </div>
+  <script>
+    function connexion() {
+      const username = document.getElementById("nom").value;
+      const password = document.getElementById("pass").value;
+      const msg = document.getElementById("message");
 
-  <div class="post">
-    <p><strong>📣 GAZO Hacker</strong> · il y a 30min</p>
-    <p>Nouvelle mission disponible. Accéder au noyau BLACK via <a href="blackcore.html" style="color: #00ff00;">BlackCore</a></p>
-    <div class="buttons">
-      <button class="btn">J’aime</button>
-      <button class="btn">Commenter</button>
-      <button class="btn">Partager</button>
-    </div>
-  </div>
+      if (password === "shadowgaz") {
+        window.location.href = "fb.html";
+} else {
+        msg.textContent = "⛔ Accès refusé. Traçage enclenché...";
+}
+}
+  </script>
 </body>
 </html>
+```
 ```
 ```
