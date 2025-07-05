@@ -3,95 +3,135 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Cyber Dash - GAZO WORLD</title>
+  <title>Cyber Dash - Real Vibe</title>
   <style>
     body {
       margin: 0;
-      background-color: #000;
-      overflow: hidden;
+      background: url('https://raw.githubusercontent.com/ManzDev/cursos-assets/main/futuristic-grid.gif') no-repeat center center fixed;
+      background-size: cover;
       font-family: monospace;
+      overflow: hidden;
       color: #00ff00;
 }
-    canvas {
-      display: block;
-      margin: 0 auto;
-      background: #111;
-      border: 2px solid #00ff00;
+
+    #game {
+      position: relative;
+      width: 400px;
+      height: 400px;
+      margin: 50px auto;
+      border: 2px solid lime;
+      background: rgba(0, 0, 0, 0.7);
 }
-    #score {
+
+    #player,.obstacle {
       position: absolute;
-      top: 10px;
-      left: 10px;
-      color: #00ff00;
-      font-size: 1.2em;
+      width: 40px;
+      height: 40px;
+      background-size: cover;
 }
+
+    #player {
+      background-image: url('https://raw.githubusercontent.com/ManzDev/cursos-assets/main/avatar-gamer.png');
+      bottom: 0;
+      left: 180px;
+}
+
+.obstacle {
+      background-image: url('https://raw.githubusercontent.com/ManzDev/cursos-assets/main/enemy-bot.png');
+}
+
+    #score {
+      text-align: center;
+      font-size: 1.2em;
+      margin-top: 20px;
+}
+
     #message {
       text-align: center;
       font-size: 2em;
       color: red;
-      margin-top: 100px;
+      margin-top: 20px;
 }
   </style>
 </head>
 <body>
+  <div id="game">
+    <div id="player"></div>
+  </div>
   <div id="score">Score: 0</div>
-  <canvas id="game" width="400" height="400"></canvas>
   <div id="message"></div>
 
   <script>
-    const canvas = document.getElementById("game");
-    const ctx = canvas.getContext("2d");
+    const game = document.getElementById("game");
+    const player = document.getElementById("player");
+    const scoreDisplay = document.getElementById("score");
+    const message = document.getElementById("message");
 
-    const player = { x: 180, y: 360, size: 20};
-    const obstacle = { x: Math.random() * 360, y: 0, size: 20, speed: 2};
+    let playerX = 180;
     let score = 0;
-    let isGameOver = false;
+    let gameOver = false;
 
-    function drawPlayer() {
-      ctx.fillStyle = "#00ff00";
-      ctx.fillRect(player.x, player.y, player.size, player.size);
-}
-
-    function drawObstacle() {
-      ctx.fillStyle = "#ff0000";
-      ctx.fillRect(obstacle.x, obstacle.y, obstacle.size, obstacle.size);
-}
-
-    function update() {
-      if (isGameOver) return;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      drawPlayer();
-      drawObstacle();
-      obstacle.y += obstacle.speed;
-
-      if (obstacle.y> 400) {
-        obstacle.y = 0;
-        obstacle.x = Math.random() * 360;
-        score++;
-        document.getElementById("score").textContent = "Score: " + score;
-}
-
-      if (
-        player.x < obstacle.x + obstacle.size &&
-        player.x + player.size> obstacle.x &&
-        player.y < obstacle.y + obstacle.size &&
-        player.y + player.size> obstacle.y
-) {
-        document.getElementById("message").textContent = "💥 SÉQUENCE TERMINÉE — SCORE: " + score;
-        isGameOver = true;
-}
-
-      requestAnimationFrame(update);
+    function movePlayer(x) {
+      if (gameOver) return;
+      playerX += x;
+      playerX = Math.max(0, Math.min(360, playerX));
+      player.style.left = playerX + "px";
 }
 
     document.addEventListener("keydown", (e) => {
-      if (isGameOver) return;
-      if (e.key === "ArrowLeft" && player.x> 0) player.x -= 20;
-      if (e.key === "ArrowRight" && player.x < 380) player.x += 20;
+      if (e.key === "ArrowLeft") movePlayer(-20);
+      if (e.key === "ArrowRight") movePlayer(20);
 });
 
-    update();
+    function createObstacle() {
+      const obstacle = document.createElement("div");
+      obstacle.classList.add("obstacle");
+      obstacle.style.left = Math.floor(Math.random() * 360) + "px";
+      obstacle.style.top = "0px";
+      game.appendChild(obstacle);
+      return obstacle;
+}
+
+    function updateObstacle(obstacle) {
+      let top = parseInt(obstacle.style.top);
+      obstacle.style.top = (top + 4) + "px";
+
+      // Collision
+      const obsX = parseInt(obstacle.style.left);
+      const obsY = top + 40;
+      if (
+        obsX < playerX + 40 &&
+        obsX + 40> playerX &&
+        obsY> 360
+) {
+        gameOver = true;
+        message.textContent = "💀 SÉQUENCE TERMINÉE — SCORE: " + score;
+}
+
+      // Remove if off screen
+      if (top> 400) {
+        game.removeChild(obstacle);
+        if (!gameOver) {
+          score++;
+          scoreDisplay.textContent = "Score: " + score;
+}
+}
+}
+
+    setInterval(() => {
+      if (!gameOver) {
+        const obs = createObstacle();
+        const interval = setInterval(() => {
+          if (!gameOver) {
+            updateObstacle(obs);
+} else {
+            clearInterval(interval);
+}
+}, 30);
+}
+}, 1500);
   </script>
 </body>
 </html>
+```
 ```
