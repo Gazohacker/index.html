@@ -3,11 +3,11 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Cyber Dash - Real Vibe</title>
+  <title>Cyber Dash - Custom</title>
   <style>
     body {
       margin: 0;
-      background: url('https://raw.githubusercontent.com/ManzDev/cursos-assets/main/futuristic-grid.gif') no-repeat center center fixed;
+      background: url('assets/background.jpg') no-repeat center center fixed;
       background-size: cover;
       font-family: monospace;
       overflow: hidden;
@@ -20,24 +20,25 @@
       height: 400px;
       margin: 50px auto;
       border: 2px solid lime;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.6);
 }
 
     #player,.obstacle {
       position: absolute;
       width: 40px;
       height: 40px;
-      background-size: cover;
+      background-size: contain;
+      background-repeat: no-repeat;
 }
 
     #player {
-      background-image: url('https://raw.githubusercontent.com/ManzDev/cursos-assets/main/avatar-gamer.png');
+      background-image: url('assets/player.png');
       bottom: 0;
       left: 180px;
 }
 
 .obstacle {
-      background-image: url('https://raw.githubusercontent.com/ManzDev/cursos-assets/main/enemy-bot.png');
+      background-image: url('assets/[![IMG-20250312-152913-579.jpg](https://i.postimg.cc/8PH5XhcP/IMG-20250312-152913-579.jpg)](https://postimg.cc/RNW4NJwj)');
 }
 
     #score {
@@ -96,7 +97,6 @@
       let top = parseInt(obstacle.style.top);
       obstacle.style.top = (top + 4) + "px";
 
-      // Collision
       const obsX = parseInt(obstacle.style.left);
       const obsY = top + 40;
       if (
@@ -105,10 +105,9 @@
         obsY> 360
 ) {
         gameOver = true;
-        message.textContent = "💀 SÉQUENCE TERMINÉE — SCORE: " + score;
+        message.textContent = "💥 GAME OVER — SCORE: " + score;
 }
 
-      // Remove if off screen
       if (top> 400) {
         game.removeChild(obstacle);
         if (!gameOver) {
@@ -129,9 +128,9 @@
 }
 }, 30);
 }
-}, 1500);
+}, 1400);
   </script>
 </body>
-</html>
+</html>```
 ```
 ```
