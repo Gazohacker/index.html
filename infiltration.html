@@ -3,29 +3,15 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>INTRUSION DÉTECTÉE</title>
+  <title>BLACKCORE - SYSTÈME PRIS</title>
   <style>
     body {
-      background-color: black;
-      color: red;
+      background-color: #000;
+      color: #ff0000;
       font-family: monospace;
       padding: 20px;
       font-size: 1.2em;
       overflow: hidden;
-}
-
-    #log {
-      white-space: pre-wrap;
-}
-
-.alert {
-      animation: blink 1s infinite;
-      color: #ff0000;
-      font-weight: bold;
-}
-
-    @keyframes blink {
-      50% { opacity: 0.4;}
 }
 
 .stars {
@@ -33,54 +19,69 @@
       top: 0; left: 0;
       width: 100vw; height: 100vh;
       background-image: url('https://raw.githubusercontent.com/ManzDev/cursos-assets/main/animated-stars.gif');
-      opacity: 0.2;
+      opacity: 0.1;
       pointer-events: none;
       z-index: -1;
+}
+
+.alert {
+      animation: flash 1s infinite;
+      font-weight: bold;
+      color: red;
+      text-align: center;
+      margin-bottom: 20px;
+}
+
+    @keyframes flash {
+      0%, 100% { opacity: 1;}
+      50% { opacity: 0.3;}
+}
+
+    #corelog {
+      white-space: pre-wrap;
 }
   </style>
 </head>
 <body>
   <div class="stars"></div>
-  <div class="alert">⚠️ INTRUSION DÉTECTÉE — PROTOCOLE D'ALARME ACTIF</div>
-  <br>
-  <div id="log"></div>
+  <div class="alert">⚠️ ACCÈS À BLACKCORE EN COURS ⚠️</div>
+  <div id="corelog"></div>
 
   <script>
-    const lignes = [
-      "> Tentative d'accès au noyau...",
-      "> Contournement du pare-feu...",
-      "> Localisation des fichiers cryptés...",
-      "> Déchiffrement en cours...",
-      "░▒▓█ 20% █▓▒░",
-      "░▒▓█ 50% █▓▒░",
-      "░▒▓█ 100% █▓▒░",
-      "> Chargement des données sensibles...",
-      "> 🧨 Séquence d'autodestruction désactivée.",
-      "> Brèche maintenue. Contrôle système obtenu."
+    const lines = [
+      "> INITIATION DU BLACKCORE...",
+      "> Canal sécurisé établi.",
+      "> Bypass de la surveillance externe...",
+      "> Extraction des clés de contrôle...",
+      "░▒▓█ TRANSFERT D'IDENTITÉ █▓▒░",
+      "> CODE SYSTÈME: #BLACK-SHADOW-14",
+      "> Liaison stabilisée. Noyau verrouillé.",
+      "> 🔓 Black access granted. Control is yours.",
+      "> Fin de transmission..."
     ];
 
     let i = 0;
-    const log = document.getElementById("log");
+    const log = document.getElementById("corelog");
 
-    function writeLine() {
-      if (i < lignes.length) {
+    function displayLine() {
+      if (i < lines.length) {
         let j = 0;
-        const texte = lignes[i];
-        const intervalle = setInterval(() => {
-          if (j < texte.length) {
-            log.innerHTML += texte[j];
+        const text = lines[i];
+        const interval = setInterval(() => {
+          if (j < text.length) {
+            log.textContent += text[j];
             j++;
 } else {
-            clearInterval(intervalle);
-            log.innerHTML += "\n";
+            clearInterval(interval);
+            log.innerHTML += "<br>";
             i++;
-            setTimeout(writeLine, 500);
+            setTimeout(displayLine, 500);
 }
-}, 50);
+}, 40);
 }
 }
 
-    window.onload = writeLine;
+    window.onload = displayLine;
   </script>
 </body>
 </html>
