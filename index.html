@@ -1,1 +1,122 @@
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>GAZO // Dark Node Access</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      background: radial-gradient(ellipse at center, #0a0a0a, #000);
+      color: #ff3257;
+      font-family: 'Courier New', monospace;
+      overflow: hidden;
+      cursor: url('https://cur.cursors-4u.net/cursors/cur-13/cur1145.cur'), auto;
+}
 
+.scanlines {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.2) 0px,
+        rgba(0, 0, 0, 0.2) 1px,
+        transparent 1px,
+        transparent 4px
+);
+      pointer-events: none;
+      z-index: 3;
+}
+
+.glitch-text {
+      text-align: center;
+      font-size: 1.5em;
+      margin-top: 20vh;
+      text-shadow: 0 0 2px #ff3257, 0 0 6px #1fffe2;
+      animation: glitch 2s infinite;
+}
+
+    @keyframes glitch {
+      0%   { transform: skewX(0);}
+      20%  { transform: skewX(-1deg);}
+      40%  { transform: skewX(1deg);}
+      60%  { transform: skewX(0);}
+      80%  { transform: skewX(1.5deg);}
+      100% { transform: skewX(0);}
+}
+
+.terminal-box {
+      margin: 50px auto;
+      width: 90%;
+      max-width: 600px;
+      background: rgba(20, 20, 20, 0.8);
+      border: 1px solid #ff3257;
+      padding: 20px;
+      box-shadow: 0 0 10px #1fffe2;
+      z-index: 2;
+}
+
+.command-line {
+      font-size: 0.95em;
+      color: #ff3257;
+      margin-top: 10px;
+}
+
+.intro-seq {
+      white-space: pre-line;
+      font-size: 1em;
+      color: #1fffe2;
+      margin-top: 20px;
+}
+
+.btn-access {
+      margin-top: 30px;
+      padding: 10px 25px;
+      background: #000;
+      border: 2px solid #1fffe2;
+      color: #1fffe2;
+      font-family: monospace;
+      font-size: 1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+}
+
+.btn-access:hover {
+      background: #1fffe2;
+      color: #000;
+}
+
+    audio {
+      display: none;
+}
+  </style>
+</head>
+<body>
+  <audio src="https://freegames.by-cv.com/audio/modem.mp3" autoplay loop></audio>
+
+  <div class="glitch-text">[ RELAIS GAZO NODE-8832.0 | INITIATION EN COURS... ]</div>
+
+  <div class="terminal-box">
+    <div class="intro-seq">
+Connexion.onion://493-rlx/...<br>
+⟶ Canal chiffré établi: ███████████████████<br>
+⟶ Chargement des paquets: NODE/GAZO/CORE.ROM<br>
+⟶ Clés de signature: [GA-ZO-88–SIG/15]<br>
+⟶ Autorisation passive activée...
+    </div>
+
+    <div class="command-line">
+      GAZO://> Accès non-certifié détecté. Poursuivre?
+    </div>
+
+    <a href="archives.html">
+      <button class="btn-access">⛛ ACCÉDER AU NŒUD</button>
+    </a>
+  </div>
+
+  <div class="scanlines"></div>
+</body>
+</html>
+```
