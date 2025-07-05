@@ -1,41 +1,53 @@
-<details>
-<summary>💻 CLIQUE ICI pour voir le code à coller</summary>
-
 ```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Black Download Hub</title>
+  <title>Blackbook | GAZO</title>
   <style>
     body {
-      background-color: #000;
+      margin: 0;
+      background-color: #0d0d0d;
       color: #00ff00;
       font-family: monospace;
-      padding: 40px;
-      font-size: 1.2em;
+      padding: 20px;
 }
 
-.terminal-line {
-      margin: 20px 0;
+.profile {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 40px;
 }
 
-.filename {
-      flex: 1;
+.profile img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 2px solid #00ff00;
+}
+
+.post {
+      border: 1px solid #00ff00;
+      padding: 15px;
+      margin-bottom: 20px;
+      background: rgba(0, 255, 0, 0.05);
+}
+
+.buttons {
+      margin-top: 10px;
 }
 
 .btn {
+      margin-right: 12px;
       background: #00ff00;
       color: black;
       border: none;
-      padding: 6px 16px;
-      font-weight: bold;
-      font-family: inherit;
+      padding: 4px 10px;
       cursor: pointer;
-      transition: background 0.3s;
+      font-family: inherit;
+      font-size: 0.9em;
+      font-weight: bold;
 }
 
 .btn:hover {
@@ -44,27 +56,44 @@
   </style>
 </head>
 <body>
-  <h2>> Répertoire: /black/downloads</h2>
-
-  <div class="terminal-line">
-    <span class="filename">🎮 GAZO OPS Remastered.zip</span>
-    <a href="https://example.com/fichier1" class="btn">Télécharger</a>
+  <div class="profile">
+    <img src="https://raw.githubusercontent.com/ManzDev/cursos-assets/main/avatar-gamer.png" alt="GAZO profile">
+    <div>
+      <h2>👤 GAZO Hacker</h2>
+      <p><em>Statut: connecté depuis le ShadowNet 🕶️</em></p>
+    </div>
   </div>
 
-  <div class="terminal-line">
-    <span class="filename">📼 Dossier vidéo confidentiel.mp4</span>
-    <a href="https://example.com/fichier2" class="btn">Télécharger</a>
+  <div class="post">
+    <p><strong>🧠 GAZO Hacker</strong> · il y a 2h</p>
+    <p>Lancement de l’interface BLACKBOOK réussi. Le réseau est actif, les agents sont connectés.</p>
+    <div class="buttons">
+      <button class="btn">J’aime</button>
+      <button class="btn">Commenter</button>
+      <button class="btn">Partager</button>
+    </div>
   </div>
 
-  <div class="terminal-line">
-    <span class="filename">👾 HackTool-GhostCLI.exe</span>
-    <a href="https://example.com/fichier3" class="btn">Télécharger</a>
+  <div class="post">
+    <p><strong>💾 GAZO Hacker</strong> · il y a 1h</p>
+    <p>Ajout du fichier confidentiel: <a href="downloads.html" style="color: #00ff00;">GAZO OPS.zip</a></p>
+    <div class="buttons">
+      <button class="btn">J’aime</button>
+      <button class="btn">Commenter</button>
+      <button class="btn">Partager</button>
+    </div>
   </div>
 
-  <div class="terminal-line">
-    <span class="filename">🧨 DARKZONE Patch v1.3.iso</span>
-    <a href="https://example.com/fichier4" class="btn">Télécharger</a>
+  <div class="post">
+    <p><strong>📣 GAZO Hacker</strong> · il y a 30min</p>
+    <p>Nouvelle mission disponible. Accéder au noyau BLACK via <a href="blackcore.html" style="color: #00ff00;">BlackCore</a></p>
+    <div class="buttons">
+      <button class="btn">J’aime</button>
+      <button class="btn">Commenter</button>
+      <button class="btn">Partager</button>
+    </div>
   </div>
 </body>
 </html>
+```
 ```
