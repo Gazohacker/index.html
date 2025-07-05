@@ -1,72 +1,83 @@
 ```html
-   <h1 onclick="document.getElementById('sound').play(); window.location.href='infiltration.html'">GAZO WORLD</h1>
-   ```
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>HACKER BLACK — INITIATION</title>
+  <style>
     body {
-      background-color: black;
-      color: #00ff00;
+      background: #000;
+      color: #39ff14;
       font-family: monospace;
-      font-size: 1.2em;
       padding: 20px;
+      font-size: 1.2em;
       overflow: hidden;
 }
 
-    #output {
-      white-space: pre-wrap;
-      animation: blink 1s step-end infinite;
-}
-
-    @keyframes blink {
-      50% { opacity: 0.4;}
-}
-
-.matrix-bg {
+.bg {
       position: fixed;
       top: 0; left: 0;
       width: 100vw; height: 100vh;
       background-image: url('https://raw.githubusercontent.com/ManzDev/cursos-assets/main/animated-stars.gif');
-      opacity: 0.15;
-      pointer-events: none;
+      opacity: 0.1;
       z-index: -1;
+}
+
+    #terminal {
+      white-space: pre-wrap;
+}
+
+    @keyframes blink {
+      0%, 100% { opacity: 1;}
+      50% { opacity: 0.3;}
+}
+
+.blink {
+      animation: blink 1s infinite;
 }
   </style>
 </head>
 <body>
-  <div class="matrix-bg"></div>
-  <div id="output"></div>
+  <div class="bg"></div>
+  <div id="terminal" class="blink"></div>
 
   <script>
-    const lines = [
-      "> Connexion à GAZO WORLD...",
-      "> Chargement des modules cybernétiques...",
-      "> Sécurisation du serveur dans:",
-      "10", "9", "8", "7", "6", "5", "4", "3", "2", "1", "...",
-      "> ACCÈS REFUSÉ — Système verrouillé.",
-      "> Fin de session. 🔒"
+    const lignes = [
+      "> Initialisation du protocole BLACK...",
+      "> Authentification biométrique désactivée",
+      "> Chargement des modules obscurs...",
+      "> Déploiement du masque numérique...",
+      "> Connexion au serveur noir établie.",
+      "> Transfert de contrôle dans:",
+      "5", "4", "3", "2", "1", "...",
+      "> 🔓 ACCÈS BLACK DÉVERROUILLÉ",
+      "> Accéder au noyau principal: [Entrée] — lien vers blackcore.html"
     ];
 
     let i = 0;
-    const output = document.getElementById("output");
+    let terminal = document.getElementById("terminal");
 
-    function typeLine() {
-      if (i < lines.length) {
-        const line = lines[i];
+    function afficherLigne() {
+      if (i < lignes.length) {
         let j = 0;
-        const interval = setInterval(() => {
-          if (j < line.length) {
-            output.innerHTML += line[j];
+        const ligne = lignes[i];
+        const intervalle = setInterval(() => {
+          if (j < ligne.length) {
+            terminal.textContent += ligne[j];
             j++;
 } else {
-            clearInterval(interval);
-            output.innerHTML += "\n";
+            clearInterval(intervalle);
+            terminal.innerHTML += "<br>";
             i++;
-            setTimeout(typeLine, 600);
+            setTimeout(afficherLigne, 400);
 }
-}, 50);
+}, 40);
+} else {
+        terminal.innerHTML += `<br><a href="blackcore.html" style="color:#39ff14">> Lancer le noyau BLACK</a>`;
 }
 }
 
-    window.onload = typeLine;
+    window.onload = afficherLigne;
   </script>
 </body>
 </html>
-```
