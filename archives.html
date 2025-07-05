@@ -1,0 +1,106 @@
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>GAZO // Archives Cryptées</title>
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #ff3257;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      padding-top: 40px;
+      overflow-x: hidden;
+}
+
+.glitch-title {
+      font-size: 1.5em;
+      animation: glitch 2s infinite;
+      text-shadow: 0 0 2px #1fffe2;
+}
+
+    @keyframes glitch {
+      0% { transform: skewX(0);}
+      25% { transform: skewX(-1deg);}
+      50% { transform: skewX(1.5deg);}
+      75% { transform: skewX(-0.5deg);}
+      100% { transform: skewX(0);}
+}
+
+.file {
+      display: inline-block;
+      margin: 20px;
+      padding: 20px;
+      background: #111;
+      border: 1px solid #1fffe2;
+      width: 260px;
+      height: 180px;
+      color: #ccc;
+      position: relative;
+      box-shadow: 0 0 10px #1fffe2;
+      transition: all 0.3s ease;
+}
+
+.file:hover {
+      background: #000;
+      color: #ff3257;
+      transform: scale(1.03);
+}
+
+.file h3 {
+      font-size: 1em;
+      margin-bottom: 10px;
+}
+
+.file p {
+      font-size: 0.85em;
+}
+
+.btn-back {
+      margin-top: 40px;
+      padding: 10px 25px;
+      background: #000;
+      border: 2px solid #1fffe2;
+      color: #1fffe2;
+      font-family: monospace;
+      cursor: pointer;
+      transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+      background: #1fffe2;
+      color: #000;
+}
+
+    audio {
+      display: none;
+}
+  </style>
+</head>
+<body>
+  <audio src="https://freegames.by-cv.com/audio/deep-glitch.mp3" autoplay loop></audio>
+
+  <div class="glitch-title">[ ARCHIVES CRYPTÉES – Nœud GAZO-X32 ]</div>
+
+  <div class="file">
+    <h3>FICHIER_17X.ROM</h3>
+    <p>“Le signal traverse la matière. L’agent ne répond plus.”</p>
+  </div>
+
+  <div class="file">
+    <h3>extract.abn998.jpg</h3>
+    <p>⚠️ Chargement impossible: image corrompue<br>Checksum erroné (0x7FF-A91X)</p>
+  </div>
+
+  <div class="file">
+    <h3>log.aph.42.txt</h3>
+    <p>“Mémoire perdue, fragments restaurés.<br>GAZO était ici — puis plus rien.”</p>
+  </div>
+
+  <a href="node-entry.html">
+    <button class="btn-back">⟵ RETOUR AU NŒUD</button>
+  </a>
+</body>
+</html>
+```
