@@ -1,170 +1,70 @@
+<details>
+<summary>💻 CLIQUE ICI pour voir le code à coller</summary>
+
 ```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>HACKER BLACK — INITIATION</title>
-  <style>
-    body {
-      background: #000;
-      color: #39ff14;
-      font-family: monospace;
-      padding: 20px;
-      font-size: 1.2em;
-      overflow: hidden;
-}
-```html
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>BLACKCORE - SYSTÈME PRIS</title>
+  <title>Black Download Hub</title>
   <style>
     body {
       background-color: #000;
-      color: #ff0000;
+      color: #00ff00;
       font-family: monospace;
-      padding: 20px;
+      padding: 40px;
       font-size: 1.2em;
-      overflow: hidden;
 }
 
-.stars {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background-image: url('https://raw.githubusercontent.com/ManzDev/cursos-assets/main/animated-stars.gif');
-      opacity: 0.1;
-      pointer-events: none;
-      z-index: -1;
+.terminal-line {
+      margin: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 }
 
-.alert {
-      animation: flash 1s infinite;
+.filename {
+      flex: 1;
+}
+
+.btn {
+      background: #00ff00;
+      color: black;
+      border: none;
+      padding: 6px 16px;
       font-weight: bold;
-      color: red;
-      text-align: center;
-      margin-bottom: 20px;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.3s;
 }
 
-    @keyframes flash {
-      0%, 100% { opacity: 1;}
-      50% { opacity: 0.3;}
-}
-
-    #corelog {
-      white-space: pre-wrap;
+.btn:hover {
+      background: lime;
 }
   </style>
 </head>
 <body>
-  <div class="stars"></div>
-  <div class="alert">⚠️ ACCÈS À BLACKCORE EN COURS ⚠️</div>
-  <div id="corelog"></div>
+  <h2>> Répertoire: /black/downloads</h2>
 
-  <script>
-    const lines = [
-      "> INITIATION DU BLACKCORE...",
-      "> Canal sécurisé établi.",
-      "> Bypass de la surveillance externe...",
-      "> Extraction des clés de contrôle...",
-      "░▒▓█ TRANSFERT D'IDENTITÉ █▓▒░",
-      "> CODE SYSTÈME: #BLACK-SHADOW-14",
-      "> Liaison stabilisée. Noyau verrouillé.",
-      "> 🔓 Black access granted. Control is yours.",
-      "> Fin de transmission..."
-    ];
+  <div class="terminal-line">
+    <span class="filename">🎮 GAZO OPS Remastered.zip</span>
+    <a href="https://example.com/fichier1" class="btn">Télécharger</a>
+  </div>
 
-    let i = 0;
-    const log = document.getElementById("corelog");
+  <div class="terminal-line">
+    <span class="filename">📼 Dossier vidéo confidentiel.mp4</span>
+    <a href="https://example.com/fichier2" class="btn">Télécharger</a>
+  </div>
 
-    function displayLine() {
-      if (i < lines.length) {
-        let j = 0;
-        const text = lines[i];
-        const interval = setInterval(() => {
-          if (j < text.length) {
-            log.textContent += text[j];
-            j++;
-} else {
-            clearInterval(interval);
-            log.innerHTML += "<br>";
-            i++;
-            setTimeout(displayLine, 500);
-}
-}, 40);
-}
-}
+  <div class="terminal-line">
+    <span class="filename">👾 HackTool-GhostCLI.exe</span>
+    <a href="https://example.com/fichier3" class="btn">Télécharger</a>
+  </div>
 
-    window.onload = displayLine;
-  </script>
+  <div class="terminal-line">
+    <span class="filename">🧨 DARKZONE Patch v1.3.iso</span>
+    <a href="https://example.com/fichier4" class="btn">Télécharger</a>
+  </div>
 </body>
 </html>
 ```
-.bg {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background-image: url('https://raw.githubusercontent.com/ManzDev/cursos-assets/main/animated-stars.gif');
-      opacity: 0.1;
-      z-index: -1;
-}
-
-    #terminal {
-      white-space: pre-wrap;
-}
-
-    @keyframes blink {
-      0%, 100% { opacity: 1;}
-      50% { opacity: 0.3;}
-}
-
-.blink {
-      animation: blink 1s infinite;
-}
-  </style>
-</head>
-<body>
-  <div class="bg"></div>
-  <div id="terminal" class="blink"></div>
-
-  <script>
-    const lignes = [
-      "> Initialisation du protocole BLACK...",
-      "> Authentification biométrique désactivée",
-      "> Chargement des modules obscurs...",
-      "> Déploiement du masque numérique...",
-      "> Connexion au serveur noir établie.",
-      "> Transfert de contrôle dans:",
-      "5", "4", "3", "2", "1", "...",
-      "> 🔓 ACCÈS BLACK DÉVERROUILLÉ",
-      "> Accéder au noyau principal: [Entrée] — lien vers blackcore.html"
-    ];
-
-    let i = 0;
-    let terminal = document.getElementById("terminal");
-
-    function afficherLigne() {
-      if (i < lignes.length) {
-        let j = 0;
-        const ligne = lignes[i];
-        const intervalle = setInterval(() => {
-          if (j < ligne.length) {
-            terminal.textContent += ligne[j];
-            j++;
-} else {
-            clearInterval(intervalle);
-            terminal.innerHTML += "<br>";
-            i++;
-            setTimeout(afficherLigne, 400);
-}
-}, 40);
-} else {
-        terminal.innerHTML += `<br><a href="blackcore.html" style="color:#39ff14">> Lancer le noyau BLACK</a>`;
-}
-}
-
-    window.onload = afficherLigne;
-  </script>
-</body>
-</html>
