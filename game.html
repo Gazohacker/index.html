@@ -3,22 +3,24 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Cyber Dash – GAZO Edition</title>
+  <title>Cyber Dash – GAZO Ultra</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       margin: 0;
       background: url('https://i.postimg.cc/8PH5XhcP/IMG-20250312-152913-579.jpg') no-repeat center center fixed;
       background-size: cover;
       font-family: monospace;
-      overflow: hidden;
+      overflow-x: hidden;
       color: #00ff00;
 }
 
     #game {
       position: relative;
-      width: 400px;
+      width: 100%;
+      max-width: 400px;
       height: 400px;
-      margin: 50px auto;
+      margin: 30px auto 10px auto;
       border: 2px solid lime;
       background: rgba(0, 0, 0, 0.6);
 }
@@ -44,7 +46,7 @@
     #score {
       text-align: center;
       font-size: 1.2em;
-      margin-top: 20px;
+      margin-top: 10px;
 }
 
     #message {
@@ -69,10 +71,39 @@
     #restart:hover {
       background: #66ff66;
 }
+
+    #controls {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 10px auto;
+}
+
+.btn {
+      font-size: 1.5em;
+      font-family: monospace;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background: lime;
+      color: black;
+      cursor: pointer;
+}
+
+.btn:hover {
+      background: #66ff66;
+}
+
+    @media (max-width: 500px) {
+      #game {
+        width: 90%;
+        height: 360px;
+}
+}
   </style>
 </head>
 <body>
-  <!-- Audio zone -->
+  <!-- Audio -->
   <audio id="bg-music" src="https://freegames.by-cv.com/audio/matrix-theme.mp3" loop autoplay></audio>
   <audio id="move-sound" src="https://freegames.by-cv.com/audio/blip.wav"></audio>
   <audio id="hit-sound" src="https://freegames.by-cv.com/audio/break.wav"></audio>
@@ -80,9 +111,15 @@
   <div id="game">
     <div id="player"></div>
   </div>
+
+  <div id="controls">
+    <button class="btn" onclick="movePlayer(-20)">⬅️</button>
+    <button class="btn" onclick="movePlayer(20)">➡️</button>
+  </div>
+
   <div id="score">Score: 0</div>
   <div id="message"></div>
-  <button id="restart" onclick="location.reload()">Rejouer</button>
+  <button id="restart" onclick="location.reload()">🔄 Rejouer</button>
 
   <script>
     const game = document.getElementById("game");
@@ -114,7 +151,8 @@
     function createObstacle() {
       const obstacle = document.createElement("div");
       obstacle.classList.add("obstacle");
-      obstacle.style.left = Math.floor(Math.random() * 360) + "px";
+
+obstacle.style.left = Math.floor(Math.random() * 360) + "px";
       obstacle.style.top = "0px";
       game.appendChild(obstacle);
       return obstacle;
@@ -141,7 +179,8 @@
         game.removeChild(obstacle);
         if (!gameOver) {
           score++;
-          scoreDisplay.textContent = "Score: " + score;}
+          scoreDisplay.textContent = "Score: " + score;
+}
 }
 }
 
@@ -156,8 +195,8 @@
 }
 }, 30);
 }
-}, 1400);
+}, 1300);
   </script>
 </body>
 </html>
-```
+``````
