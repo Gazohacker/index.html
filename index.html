@@ -3,78 +3,95 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Connexion - Blackbook</title>
+  <title>Cyber Dash - GAZO WORLD</title>
   <style>
     body {
-      background-color: black;
-      color: #00ff00;
+      margin: 0;
+      background-color: #000;
+      overflow: hidden;
       font-family: monospace;
-      padding: 50px;
-}
-
-    h2 {
-      text-align: center;
-      margin-bottom: 40px;
-}
-
-    input {
-      display: block;
-      margin: 15px auto;
-      padding: 8px;
-      font-family: inherit;
-      font-size: 1em;
-      width: 300px;
-      background: #111;
-      border: 1px solid #00ff00;
       color: #00ff00;
 }
-
-    button {
+    canvas {
       display: block;
-      margin: 20px auto;
-      padding: 10px 20px;
-      background: #00ff00;
-      border: none;
-      color: black;
-      font-weight: bold;
-      cursor: pointer;
+      margin: 0 auto;
+      background: #111;
+      border: 2px solid #00ff00;
 }
-
-    button:hover {
-      background: lime;
+    #score {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: #00ff00;
+      font-size: 1.2em;
 }
-
-.message {
+    #message {
       text-align: center;
-      margin-top: 20px;
+      font-size: 2em;
       color: red;
-      font-weight: bold;
+      margin-top: 100px;
 }
   </style>
 </head>
 <body>
-  <h2>> Connexion au réseau Blackbook</h2>
-
-  <input type="text" id="nom" placeholder="Nom d'utilisateur">
-  <input type="password" id="pass" placeholder="Mot de passe">
-  <button onclick="connexion()">Connexion</button>
-  <div class="message" id="message"></div>
+  <div id="score">Score: 0</div>
+  <canvas id="game" width="400" height="400"></canvas>
+  <div id="message"></div>
 
   <script>
-    function connexion() {
-      const username = document.getElementById("nom").value;
-      const password = document.getElementById("pass").value;
-      const msg = document.getElementById("message");
+    const canvas = document.getElementById("game");
+    const ctx = canvas.getContext("2d");
 
-      if (password === "shadowgaz") {
-        window.location.href = "fb.html";
-} else {
-        msg.textContent = "⛔ Accès refusé. Traçage enclenché...";
+    const player = { x: 180, y: 360, size: 20};
+    const obstacle = { x: Math.random() * 360, y: 0, size: 20, speed: 2};
+    let score = 0;
+    let isGameOver = false;
+
+    function drawPlayer() {
+      ctx.fillStyle = "#00ff00";
+      ctx.fillRect(player.x, player.y, player.size, player.size);
 }
+
+    function drawObstacle() {
+      ctx.fillStyle = "#ff0000";
+      ctx.fillRect(obstacle.x, obstacle.y, obstacle.size, obstacle.size);
 }
+
+    function update() {
+      if (isGameOver) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawPlayer();
+      drawObstacle();
+      obstacle.y += obstacle.speed;
+
+      if (obstacle.y> 400) {
+        obstacle.y = 0;
+        obstacle.x = Math.random() * 360;
+        score++;
+        document.getElementById("score").textContent = "Score: " + score;
+}
+
+      if (
+        player.x < obstacle.x + obstacle.size &&
+        player.x + player.size> obstacle.x &&
+        player.y < obstacle.y + obstacle.size &&
+        player.y + player.size> obstacle.y
+) {
+        document.getElementById("message").textContent = "💥 SÉQUENCE TERMINÉE — SCORE: " + score;
+        isGameOver = true;
+}
+
+      requestAnimationFrame(update);
+}
+
+    document.addEventListener("keydown", (e) => {
+      if (isGameOver) return;
+      if (e.key === "ArrowLeft" && player.x> 0) player.x -= 20;
+      if (e.key === "ArrowRight" && player.x < 380) player.x += 20;
+});
+
+    update();
   </script>
 </body>
 </html>
-```
-```
 ```
