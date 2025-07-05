@@ -1,0 +1,105 @@
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>GAZO INFILTRATION OPS – Mission 01</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #0f0;
+      font-family: monospace;
+      text-align: center;
+}
+    table {
+      margin: 20px auto;
+      border-collapse: collapse;
+}
+    td {
+      width: 40px;
+      height: 40px;
+      border: 1px solid #333;
+      text-align: center;
+}
+.agent {
+      background-color: lime;
+}
+.guard {
+      background-color: red;
+}
+.vision {
+      background-color: rgba(255, 0, 0, 0.3);
+}
+.terminal {
+      background-color: cyan;
+}
+    #status {
+      font-size: 1.2em;
+      margin-top: 20px;
+}
+  </style>
+</head>
+<body>
+  <h1>Mission 01: Terminal Noir</h1>
+  <p>⬅️ Utilise les flèches du clavier pour te déplacer<br>🖥️ Appuie sur [P] devant le terminal pour pirater</p>
+  <table id="grid"></table>
+  <div id="status">Progression: 0%</div>
+
+  <script>
+    const size = 9;
+    const grid = document.getElementById("grid");
+    const status = document.getElementById("status");
+    let pos = { x: 0, y: 4}; // Départ à gauche centre
+    const terminal = { x: 8, y: 4};
+    const guards = [{ x: 4, y: 4}];
+    let hacked = false;
+
+    // Génère la grille
+    function drawGrid() {
+      grid.innerHTML = "";
+      for (let y = 0; y < size; y++) {
+        const row = document.createElement("tr");
+        for (let x = 0; x < size; x++) {
+          const cell = document.createElement("td");
+          if (x === pos.x && y === pos.y) cell.className = "agent";
+          else if (x === terminal.x && y === terminal.y) cell.className = "terminal";
+          else if (guards.some(g => g.x === x && g.y === y)) cell.className = "guard";
+          else if (guards.some(g => g.x - 1 <= x && x <= g.x + 1 && g.y === y)) cell.className = "vision";
+          row.appendChild(cell);
+}
+        grid.appendChild(row);
+}
+}
+
+    function updateStatus() {
+      if (pos.x === terminal.x && pos.y === terminal.y && hacked) {
+        status.textContent = "✅ Terminal piraté — Mission réussie!";
+} else if (
+        guards.some(g => g.x - 1 <= pos.x && pos.x <= g.x + 1 && g.y === pos.y)
+) {
+        status.textContent = "💥 Tu as été repéré — Mission échouée.";
+} else {
+        const progress = Math.round((pos.x / terminal.x) * 100);
+        status.textContent = "Progression: " + progress + "%";
+}
+}
+
+    document.addEventListener("keydown", (e) => {
+      if (status.textContent.includes("Mission")) return;
+      if (e.key === "ArrowLeft" && pos.x> 0) pos.x--;
+      if (e.key === "ArrowRight" && pos.x < size - 1) pos.x++;
+      if (e.key === "ArrowUp" && pos.y> 0) pos.y--;
+      if (e.key === "ArrowDown" && pos.y < size - 1) pos.y++;
+      if (e.key.toLowerCase() === "p" && pos.x === terminal.x && pos.y === terminal.y) {
+        hacked = true;
+}
+      drawGrid();
+      updateStatus();
+});
+
+    drawGrid();
+    updateStatus();
+  </script>
+</body>
+</html>
+```
