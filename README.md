@@ -1,3 +1,6 @@
+<details>
+<summary>💻 Voir le code complet GAZO WORLD</summary>
+
 ```html
 <!DOCTYPE html>
 <html lang="fr">
@@ -33,6 +36,7 @@
     h1 {
       font-size: 3em;
       animation: blink 1s infinite;
+      cursor: pointer;
 }
 
     @keyframes blink {
@@ -99,4 +103,3 @@
   </script>
 </body>
 </html>
-```
