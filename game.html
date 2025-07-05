@@ -1,0 +1,163 @@
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Cyber Dash – GAZO Edition</title>
+  <style>
+    body {
+      margin: 0;
+      background: url('https://i.postimg.cc/8PH5XhcP/IMG-20250312-152913-579.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: monospace;
+      overflow: hidden;
+      color: #00ff00;
+}
+
+    #game {
+      position: relative;
+      width: 400px;
+      height: 400px;
+      margin: 50px auto;
+      border: 2px solid lime;
+      background: rgba(0, 0, 0, 0.6);
+}
+
+    #player,.obstacle {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background-size: contain;
+      background-repeat: no-repeat;
+}
+
+    #player {
+      background-image: url('https://i.postimg.cc/zf8NdCSc/gazo-agent-run.gif');
+      bottom: 0;
+      left: 180px;
+}
+
+.obstacle {
+      background-image: url('https://i.postimg.cc/8PH5XhcP/IMG-20250312-152913-579.jpg');
+}
+
+    #score {
+      text-align: center;
+      font-size: 1.2em;
+      margin-top: 20px;
+}
+
+    #message {
+      text-align: center;
+      font-size: 2em;
+      color: red;
+      margin-top: 20px;
+}
+
+    #restart {
+      display: none;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-family: monospace;
+      font-weight: bold;
+      background: lime;
+      color: black;
+      border: none;
+      cursor: pointer;
+}
+
+    #restart:hover {
+      background: #66ff66;
+}
+  </style>
+</head>
+<body>
+  <!-- Audio zone -->
+  <audio id="bg-music" src="https://freegames.by-cv.com/audio/matrix-theme.mp3" loop autoplay></audio>
+  <audio id="move-sound" src="https://freegames.by-cv.com/audio/blip.wav"></audio>
+  <audio id="hit-sound" src="https://freegames.by-cv.com/audio/break.wav"></audio>
+
+  <div id="game">
+    <div id="player"></div>
+  </div>
+  <div id="score">Score: 0</div>
+  <div id="message"></div>
+  <button id="restart" onclick="location.reload()">Rejouer</button>
+
+  <script>
+    const game = document.getElementById("game");
+    const player = document.getElementById("player");
+    const scoreDisplay = document.getElementById("score");
+    const message = document.getElementById("message");
+    const restartBtn = document.getElementById("restart");
+    const moveSound = document.getElementById("move-sound");
+    const hitSound = document.getElementById("hit-sound");
+
+    let playerX = 180;
+    let score = 0;
+    let gameOver = false;
+
+    function movePlayer(x) {
+      if (gameOver) return;
+      playerX += x;
+      playerX = Math.max(0, Math.min(360, playerX));
+      player.style.left = playerX + "px";
+      moveSound.currentTime = 0;
+      moveSound.play();
+}
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") movePlayer(-20);
+      if (e.key === "ArrowRight") movePlayer(20);
+});
+
+    function createObstacle() {
+      const obstacle = document.createElement("div");
+      obstacle.classList.add("obstacle");
+      obstacle.style.left = Math.floor(Math.random() * 360) + "px";
+      obstacle.style.top = "0px";
+      game.appendChild(obstacle);
+      return obstacle;
+}
+
+    function updateObstacle(obstacle) {
+      let top = parseInt(obstacle.style.top);
+      obstacle.style.top = (top + 4) + "px";
+
+      const obsX = parseInt(obstacle.style.left);
+      const obsY = top + 40;
+      if (
+        obsX < playerX + 40 &&
+        obsX + 40> playerX &&
+        obsY> 360
+) {
+        gameOver = true;
+        hitSound.play();
+        message.textContent = "💥 GAME OVER — SCORE: " + score;
+        restartBtn.style.display = "block";
+}
+
+      if (top> 400) {
+        game.removeChild(obstacle);
+        if (!gameOver) {
+          score++;
+          scoreDisplay.textContent = "Score: " + score;}
+}
+}
+
+    setInterval(() => {
+      if (!gameOver) {
+        const obs = createObstacle();
+        const interval = setInterval(() => {
+          if (!gameOver) {
+            updateObstacle(obs);
+} else {
+            clearInterval(interval);
+}
+}, 30);
+}
+}, 1400);
+  </script>
+</body>
+</html>
+```
