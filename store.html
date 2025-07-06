@@ -1,0 +1,120 @@
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>GAZO.SHIELD // Boutique</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background: #000;
+      color: #1fffe2;
+      font-family: 'Courier New', monospace;
+      margin: 0;
+      padding: 20px;
+}
+
+    h1 {
+      text-align: center;
+      font-size: 2.2em;
+      margin-bottom: 10px;
+      text-shadow: 0 0 4px #ff3257;
+}
+
+    p.intro {
+      text-align: center;
+      font-size: 1em;
+      color: #ccc;
+      margin-bottom: 40px;
+}
+
+.grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+}
+
+.product {
+      background: #111;
+      border: 1px solid #1fffe2;
+      box-shadow: 0 0 10px #1fffe2;
+      width: 280px;
+      padding: 20px;
+      transition: 0.3s;
+}
+
+.product:hover {
+      transform: scale(1.03);
+      border-color: #ff3257;
+      box-shadow: 0 0 15px #ff3257;
+}
+
+.product h2 {
+      font-size: 1.1em;
+      margin-bottom: 10px;
+      color: #ff3257;
+}
+
+.product p {
+      font-size: 0.9em;
+      color: #ccc;
+}
+
+.buy-btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 8px 20px;
+      background: #000;
+      border: 1px solid #1fffe2;
+      color: #1fffe2;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+}
+
+.buy-btn:hover {
+      background: #1fffe2;
+      color: #000;
+}
+
+.back {
+      display: block;
+      margin-top: 40px;
+      text-align: center;
+      color: #ff3257;
+      text-decoration: none;
+      font-size: 0.9em;
+}
+  </style>
+</head>
+<body>
+  <h1>GAZO.SHIELD: STORE</h1>
+  <p class="intro">"Télécharge ce que les pare-feux ne veulent pas que tu saches."</p>
+
+  <div class="grid">
+
+    <div class="product">
+      <h2>🛠️ Pack Pentest Pro</h2>
+      <p>Ebook stratégique + 3 scripts Python pour test d’intrusion interne & externe.</p>
+      <a href="https://gumroad.com/l/pentestpack" class="buy-btn" target="_blank">💳 Acheter via Gumroad</a>
+    </div>
+
+    <div class="product">
+      <h2>🛡️ VPN & Anonymat Total</h2>
+      <p>Formation PDF + accès vidéo sur techniques d’invisibilité numérique et cloisonnement.</p>
+      <a href="https://www.totalvpn.com/?forceLang=fr" class="buy-btn" target="_blank">🛒 Acheter sur TotalVPN</a>
+    </div>
+
+    <div class="product">
+      <h2>🔍 Kit OSINT Starter</h2>
+      <p>Guide d’enquête numérique + outil de footprinting Python prêt à l’emploi.</p>
+      <a href="https://github.com/morganegautier/osint-starter" class="buy-btn" target="_blank">📂 Télécharger sur GitHub</a>
+    </div>
+
+  </div>
+
+  <a href="index.html" class="back">⟵ Retour à l’accueil</a>
+</body>
+</html>
+```
