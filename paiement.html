@@ -1,0 +1,99 @@
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Paiement Mobile // GAZO.SHIELD</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background: #000;
+      color: #1fffe2;
+      font-family: 'Courier New', monospace;
+      padding: 40px;
+}
+
+    h1 {
+      text-align: center;
+      color: #ff3257;
+      text-shadow: 0 0 4px #1fffe2;
+      margin-bottom: 30px;
+}
+
+    form {
+      max-width: 500px;
+      margin: auto;
+      background: #111;
+      border: 1px solid #1fffe2;
+      padding: 30px;
+      box-shadow: 0 0 12px #1fffe2;
+}
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #ccc;
+}
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      background: #000;
+      border: 1px solid #1fffe2;
+      color: #1fffe2;
+      margin-bottom: 20px;
+      font-family: monospace;
+}
+
+    input[type="submit"] {
+      background: #1fffe2;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      transition: 0.3s;
+}
+
+    input[type="submit"]:hover {
+      background: #ff3257;
+      color: #fff;
+}
+
+.back {
+      text-align: center;
+      margin-top: 30px;
+}
+
+.back a {
+      color: #ff3257;
+      text-decoration: none;
+}
+
+.back a:hover {
+      text-decoration: underline;
+}
+  </style>
+</head>
+<body>
+  <h1>Paiement Mobile GAZO.SHIELD</h1>
+
+  <form action="mailto:gazo.shield@proton.me" method="post" enctype="text/plain">
+    <label for="nom">Nom complet</label>
+    <input type="text" id="nom" name="Nom" required>
+
+    <label for="numero">Numéro utilisé (MTN CI)</label>
+    <input type="text" id="numero" name="Numéro" required>
+
+    <label for="preuve">Détails / preuve de paiement</label>
+    <textarea id="preuve" name="Preuve" rows="5" placeholder="Ajoute un lien vers la capture ou une description..."></textarea>
+
+    <input type="submit" value="🛰️ Envoyer le paiement">
+  </form>
+
+  <div class="back">
+    <a href="store.html">⟵ Revenir à la boutique</a>
+  </div>
+</body>
+</html>
+```
